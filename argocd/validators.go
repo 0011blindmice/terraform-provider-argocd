@@ -167,9 +167,9 @@ func validateIntOrStringPercentage(value interface{}, key string) (ws []string, 
 }
 
 func validateWait(value interface{}, key string) (ws []string, es []error) {
-	validMap := map[string]bool {
-		"create": true, 
-		"update": true, 
+	validMap := map[string]bool{
+		"create": true,
+		"update": true,
 		"delete": true,
 	}
 	if _, ok := value.(map[string]interface{}); !ok {

@@ -31,7 +31,7 @@ func resourceArgoCDApplication() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"metadata": metadataSchema("applications.argoproj.io"),
 			"spec":     applicationSpecSchemaV4(false),
-			"wait": 	waitSchema(),
+			"wait":     waitSchema(),
 			"cascade": {
 				Type:        schema.TypeBool,
 				Description: "Whether to applying cascading deletion when application is removed.",
