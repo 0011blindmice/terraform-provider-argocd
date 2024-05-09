@@ -24,7 +24,11 @@ resource "argocd_application" "kustomize" {
   }
 
   cascade = false # disable cascading deletion
-  wait    = true
+  wait = {
+    create = true
+    update = true
+    delete = true
+  }
 
   spec {
     project = "myproject"
