@@ -172,21 +172,22 @@ func validateWait(value interface{}, key string) (ws []string, es []error) {
 		"update": true,
 		"delete": true,
 	}
-	if _, ok := value.(map[string]interface{}); !ok {
+
+	if m, ok := value.(map[string]interface{}); ok {
+		for k := range m {
+			if _, ok := validMap[k]; ok {
+				switch t := m[k].(type) {
+				case bool:
+					continue
+				default:
+					es = append(es, fmt.Errorf("%s: invalid value type '%s' for '%s'. Value must be a boolean", key, t, k))
+				}
+			} else {
+				es = append(es, fmt.Errorf("%s: invalid key '%s'. Valid keys are 'create', 'update', and 'delete'", key, k))
+			}
+		}
+	} else {
 		es = append(es, fmt.Errorf("%s: invalid value '%s'. Value must be a map", key, value))
-		return
-	}
-	m := value.(map[string]interface{})
-	for k := range m {
-		if _, ok := validMap[k]; !ok {
-			es = append(es, fmt.Errorf("%s: invalid key '%s'. Valid keys are 'create', 'update', and 'delete'", key, k))
-		}
-		switch t := m[k].(type) {
-		case bool:
-			continue
-		default:
-			es = append(es, fmt.Errorf("%s: invalid value type '%s' for '%s'. Value must be a boolean", key, t, k))
-		}
 	}
 
 	return
