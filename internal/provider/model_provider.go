@@ -14,7 +14,7 @@ import (
 	"github.com/argoproj/argo-cd/v2/util/localconfig"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/oboukili/terraform-provider-argocd/internal/diagnostics"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/diagnostics"
 	apimachineryschema "k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/client-go/rest"

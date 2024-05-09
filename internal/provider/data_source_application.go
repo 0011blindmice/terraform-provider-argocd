@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	"github.com/oboukili/terraform-provider-argocd/internal/diagnostics"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/diagnostics"
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.

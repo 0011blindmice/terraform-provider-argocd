@@ -1,4 +1,4 @@
-module github.com/oboukili/terraform-provider-argocd
+module github.com/0011blindmice/terraform-provider-argocd
 
 go 1.20
 

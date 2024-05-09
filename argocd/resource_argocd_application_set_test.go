@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
-	"github.com/oboukili/terraform-provider-argocd/internal/features"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 )
 
 func TestAccArgoCDApplicationSet_clusters(t *testing.T) {

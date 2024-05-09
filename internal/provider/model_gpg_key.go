@@ -6,7 +6,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	customtypes "github.com/oboukili/terraform-provider-argocd/internal/types"
+	customtypes "github.com/0011blindmice/terraform-provider-argocd/internal/types"
 )
 
 type gpgKeyModel struct {

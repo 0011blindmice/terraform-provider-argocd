@@ -5,7 +5,7 @@ import (
 	"testing"
 
 	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
-	"github.com/oboukili/terraform-provider-argocd/internal/features"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 )
 
 func TestAccArgoCDApplicationDataSource(t *testing.T) {
@@ -16,7 +16,7 @@ func TestAccArgoCDApplicationDataSource(t *testing.T) {
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
 						VersionConstraint: "~> 5.0",
-						Source:            "oboukili/argocd",
+						Source:            "0011blindmice/argocd",
 					},
 				},
 				Config: `
@@ -214,7 +214,7 @@ func TestAccArgoCDApplicationDataSource_Directory(t *testing.T) {
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
 						VersionConstraint: "~> 5.0",
-						Source:            "oboukili/argocd",
+						Source:            "0011blindmice/argocd",
 					},
 				},
 				Config: `
@@ -322,7 +322,7 @@ ingress:
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
 						VersionConstraint: "~> 5.0",
-						Source:            "oboukili/argocd",
+						Source:            "0011blindmice/argocd",
 					},
 				},
 				Config: fmt.Sprintf(`
@@ -432,7 +432,7 @@ func TestAccArgoCDApplicationDataSource_Kustomize(t *testing.T) {
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
 						VersionConstraint: "~> 5.0",
-						Source:            "oboukili/argocd",
+						Source:            "0011blindmice/argocd",
 					},
 				},
 				Config: `

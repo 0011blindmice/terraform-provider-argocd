@@ -8,8 +8,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/oboukili/terraform-provider-argocd/internal/utils"
-	"github.com/oboukili/terraform-provider-argocd/internal/validators"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/utils"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/validators"
 
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )

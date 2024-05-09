@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"github.com/hashicorp/terraform-plugin-framework/diag"
-	"github.com/oboukili/terraform-provider-argocd/internal/features"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 )
 
 func ArgoCDAPIError(action, resource, id string, err error) diag.Diagnostics {

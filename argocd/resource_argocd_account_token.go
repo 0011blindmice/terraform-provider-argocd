@@ -12,7 +12,7 @@ import (
 	"github.com/cristalhq/jwt/v3"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/oboukili/terraform-provider-argocd/internal/provider"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/provider"
 )
 
 func resourceArgoCDAccountToken() *schema.Resource {

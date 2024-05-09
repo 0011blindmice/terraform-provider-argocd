@@ -22,7 +22,7 @@ func TestAccArgoCDRepositoryCredentials(t *testing.T) {
 		Steps: []resource.TestStep{
 			{
 				Config: testAccArgoCDRepositoryCredentialsSimple(
-					"https://github.com/oboukili/terraform-provider-argocd",
+					"https://github.com/0011blindmice/terraform-provider-argocd",
 				),
 			},
 			{
