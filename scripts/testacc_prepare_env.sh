@@ -2,7 +2,7 @@
 # shellcheck disable=SC2016,SC2028
 set -e
 
-export PATH=$PATH:.
+export PATH="$PATH:."
 
 argocd_version=${ARGOCD_VERSION:-v2.8.13}
 k8s_version=${ARGOCD_KUBERNETES_VERSION:-v1.27.11}
@@ -14,7 +14,7 @@ echo "\n--- Kustomize sanity checks\n"
 kustomize version || exit 1
 
 echo "\n--- Create Kind cluster\n"
-kind create cluster --name argocd --config scripts/kind-config.yml --image kindest/node:$k8s_version
+kind create cluster --retain --name argocd --config scripts/kind-config.yml --image kindest/node:$k8s_version
 
 echo "\n--- Kind sanity checks\n"
 kubectl get nodes -o wide

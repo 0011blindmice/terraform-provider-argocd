@@ -31,12 +31,7 @@ func resourceArgoCDApplication() *schema.Resource {
 		Schema: map[string]*schema.Schema{
 			"metadata": metadataSchema("applications.argoproj.io"),
 			"spec":     applicationSpecSchemaV4(false),
-			"wait": {
-				Type:        schema.TypeBool,
-				Description: "Upon application creation or update, wait for application health/sync status to be healthy/Synced, upon application deletion, wait for application to be removed, when set to true. Wait timeouts are controlled by Terraform Create, Update and Delete resource timeouts (all default to 5 minutes). **Note**: if ArgoCD decides not to sync an application (e.g. because the project to which the application belongs has a `sync_window` applied) then you will experience an expected timeout event if `wait = true`.",
-				Optional:    true,
-				Default:     false,
-			},
+			"wait": 	waitSchema(),
 			"cascade": {
 				Type:        schema.TypeBool,
 				Description: "Whether to applying cascading deletion when application is removed.",
@@ -155,7 +150,7 @@ func resourceArgoCDApplicationCreate(ctx context.Context, d *schema.ResourceData
 
 	d.SetId(fmt.Sprintf("%s:%s", app.Name, objectMeta.Namespace))
 
-	if wait, ok := d.GetOk("wait"); ok && wait.(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["create"].(bool) {
 		if err = retry.RetryContext(ctx, d.Timeout(schema.TimeoutCreate), func() *retry.RetryError {
 			var list *application.ApplicationList
 			if list, err = si.ApplicationClient.List(ctx, &applicationClient.ApplicationQuery{
@@ -309,7 +304,7 @@ func resourceArgoCDApplicationUpdate(ctx context.Context, d *schema.ResourceData
 		return argoCDAPIError("update", "application", objectMeta.Name, err)
 	}
 
-	if wait, _ok := d.GetOk("wait"); _ok && wait.(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["update"].(bool) {
 		if err = retry.RetryContext(ctx, d.Timeout(schema.TimeoutUpdate), func() *retry.RetryError {
 			var list *application.ApplicationList
 			if list, err = si.ApplicationClient.List(ctx, appQuery); err != nil {
@@ -360,7 +355,7 @@ func resourceArgoCDApplicationDelete(ctx context.Context, d *schema.ResourceData
 		return argoCDAPIError("delete", "application", appName, err)
 	}
 
-	if wait, ok := d.GetOk("wait"); ok && wait.(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["delete"].(bool) {
 		if err := retry.RetryContext(ctx, d.Timeout(schema.TimeoutDelete), func() *retry.RetryError {
 			apps, err := si.ApplicationClient.List(ctx, &applicationClient.ApplicationQuery{
 				Name:         &appName,
