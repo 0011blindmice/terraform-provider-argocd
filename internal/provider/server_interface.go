@@ -7,6 +7,8 @@ import (
 	"strconv"
 	"sync"
 
+	"github.com/0011blindmice/terraform-provider-argocd/internal/diagnostics"
+	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 	"github.com/Masterminds/semver/v3"
 	"github.com/argoproj/argo-cd/v2/pkg/apiclient"
 	"github.com/argoproj/argo-cd/v2/pkg/apiclient/account"
@@ -25,8 +27,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-log/tflog"
-	"github.com/0011blindmice/terraform-provider-argocd/internal/diagnostics"
-	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 )
 
 var runtimeErrorHandlers []func(error)

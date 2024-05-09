@@ -6,12 +6,12 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/0011blindmice/terraform-provider-argocd/internal/provider"
 	"github.com/argoproj/argo-cd/v2/pkg/apiclient/repository"
 	application "github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/retry"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/0011blindmice/terraform-provider-argocd/internal/provider"
 )
 
 func resourceArgoCDRepository() *schema.Resource {

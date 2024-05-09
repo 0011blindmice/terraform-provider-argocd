@@ -4,11 +4,11 @@ import (
 	"context"
 	"sync"
 
+	"github.com/0011blindmice/terraform-provider-argocd/internal/provider"
 	fwdiag "github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/0011blindmice/terraform-provider-argocd/internal/provider"
 
 	// Import to initialize client auth plugins.
 

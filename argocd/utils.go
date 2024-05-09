@@ -6,11 +6,11 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 	"github.com/argoproj/argo-cd/v2/server/rbacpolicy"
 	fwdiag "github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
-	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
 )
 
 func convertStringToInt64(s string) (i int64, err error) {

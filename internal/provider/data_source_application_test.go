@@ -4,8 +4,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 	"github.com/0011blindmice/terraform-provider-argocd/internal/features"
+	"github.com/hashicorp/terraform-plugin-testing/helper/resource"
 )
 
 func TestAccArgoCDApplicationDataSource(t *testing.T) {
