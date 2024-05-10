@@ -181,7 +181,7 @@ resource "argocd_application" "multiple_sources" {
 
 - `cascade` (Boolean) Whether to applying cascading deletion when application is removed.
 - `timeouts` (Block, Optional) (see [below for nested schema](#nestedblock--timeouts))
-- `wait` (Map of Boolean) Configuration for waiting for a resource to reach a desired state based on create, update, or delete.
+- `wait` (Block Set) Configuration for waiting for a resource to reach a desired state based on create, update, or delete. (see [below for nested schema](#nestedblock--wait))
 
 ### Read-Only
 
@@ -436,6 +436,16 @@ Optional:
 - `create` (String)
 - `delete` (String)
 - `update` (String)
+
+
+<a id="nestedblock--wait"></a>
+### Nested Schema for `wait`
+
+Optional:
+
+- `create` (Boolean)
+- `delete` (Boolean)
+- `update` (Boolean)
 
 
 <a id="nestedatt--status"></a>
