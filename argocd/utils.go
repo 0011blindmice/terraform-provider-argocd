@@ -224,10 +224,12 @@ func pluginSDKDiags(ds fwdiag.Diagnostics) diag.Diagnostics {
 // reconciles the deprecated wait flag versus deliberate configuration via wait_by
 func getWait(d *schema.ResourceData, operation string) bool {
 	r := false
+
 	if wait, ok := d.GetOk("wait_by"); ok {
 		r = wait.(*schema.Set).List()[0].(map[string]interface{})[operation].(bool)
 	} else if wait, ok := d.GetOk("wait"); ok {
 		r = wait.(bool)
 	}
+
 	return r
 }
