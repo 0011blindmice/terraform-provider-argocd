@@ -58,12 +58,11 @@ func TestAccArgoCDApplication(t *testing.T) {
 				),
 			},
 			{
-				// Update with wait = true
 				Config: testAccArgoCDApplicationSimple(name, "9.4.1", true),
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr(
 						"argocd_application."+name,
-						"wait.create",
+						"wait.0.create",
 						"true",
 					),
 					resource.TestCheckResourceAttr(
@@ -1071,7 +1070,7 @@ func TestAccArgoCDApplication_Wait(t *testing.T) {
 				Check: resource.ComposeTestCheckFunc(
 					resource.TestCheckResourceAttr(
 						"argocd_application."+name,
-						"wait.create",
+						"wait.0.create",
 						"true",
 					),
 					resource.TestCheckResourceAttr(
@@ -1127,7 +1126,7 @@ resource "argocd_application" "%[1]s" {
       namespace = "%[1]s"
     }
   }
-  wait = {
+  wait {
 	create = %[3]t
 	delete = %[3]t
 	update = %[3]t

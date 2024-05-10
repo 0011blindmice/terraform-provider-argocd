@@ -2,7 +2,7 @@ terraform {
   required_providers {
     argocd = {
       source  = "0011blindmice/argocd"
-      version = ">= 5.0.0"
+      version = ">= 1.0.1"
     }
     kind = {
       source  = "unicell/kind"

@@ -9,7 +9,7 @@ resource "argocd_application" "kustomize" {
   }
 
   cascade = false # disable cascading deletion
-  wait = {
+  wait {
     create = true
     update = true
     delete = true

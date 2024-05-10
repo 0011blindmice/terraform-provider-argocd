@@ -60,6 +60,4 @@ resource "argocd_application" "foo" {
       }
     }
   }
-
-  # wait = true
 }

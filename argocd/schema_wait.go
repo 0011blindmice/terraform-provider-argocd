@@ -6,10 +6,27 @@ import (
 
 func waitSchema() *schema.Schema {
 	return &schema.Schema{
-		Type:         schema.TypeMap,
-		Description:  "Configuration for waiting for a resource to reach a desired state based on create, update, or delete.",
-		Optional:     true,
-		Elem:         &schema.Schema{Type: schema.TypeBool},
-		ValidateFunc: validateWait,
+		Type:        schema.TypeSet,
+		Description: "Configuration for waiting for a resource to reach a desired state based on create, update, or delete.",
+		Optional:    true,
+		Elem: &schema.Resource{
+			Schema: map[string]*schema.Schema{
+				"create": {
+					Type:     schema.TypeBool,
+					Optional: true,
+					Default:  false,
+				},
+				"update": {
+					Type:     schema.TypeBool,
+					Optional: true,
+					Default:  false,
+				},
+				"delete": {
+					Type:     schema.TypeBool,
+					Optional: true,
+					Default:  false,
+				},
+			},
+		},
 	}
 }

@@ -150,7 +150,7 @@ func resourceArgoCDApplicationCreate(ctx context.Context, d *schema.ResourceData
 
 	d.SetId(fmt.Sprintf("%s:%s", app.Name, objectMeta.Namespace))
 
-	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["create"].(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(*schema.Set).List()[0].(map[string]interface{})["create"].(bool) {
 		if err = retry.RetryContext(ctx, d.Timeout(schema.TimeoutCreate), func() *retry.RetryError {
 			var list *application.ApplicationList
 			if list, err = si.ApplicationClient.List(ctx, &applicationClient.ApplicationQuery{
@@ -304,7 +304,7 @@ func resourceArgoCDApplicationUpdate(ctx context.Context, d *schema.ResourceData
 		return argoCDAPIError("update", "application", objectMeta.Name, err)
 	}
 
-	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["update"].(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(*schema.Set).List()[0].(map[string]interface{})["update"].(bool) {
 		if err = retry.RetryContext(ctx, d.Timeout(schema.TimeoutUpdate), func() *retry.RetryError {
 			var list *application.ApplicationList
 			if list, err = si.ApplicationClient.List(ctx, appQuery); err != nil {
@@ -355,7 +355,7 @@ func resourceArgoCDApplicationDelete(ctx context.Context, d *schema.ResourceData
 		return argoCDAPIError("delete", "application", appName, err)
 	}
 
-	if wait, ok := d.GetOk("wait"); ok && wait.(map[string]interface{})["delete"].(bool) {
+	if wait, ok := d.GetOk("wait"); ok && wait.(*schema.Set).List()[0].(map[string]interface{})["delete"].(bool) {
 		if err := retry.RetryContext(ctx, d.Timeout(schema.TimeoutDelete), func() *retry.RetryError {
 			apps, err := si.ApplicationClient.List(ctx, &applicationClient.ApplicationQuery{
 				Name:         &appName,

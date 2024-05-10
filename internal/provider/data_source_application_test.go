@@ -15,7 +15,7 @@ func TestAccArgoCDApplicationDataSource(t *testing.T) {
 			{
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
-						VersionConstraint: "~> 5.0",
+						VersionConstraint: "~> 1.0",
 						Source:            "0011blindmice/argocd",
 					},
 				},
@@ -118,7 +118,11 @@ resource "argocd_application" "foo" {
 		}
 	}
 
-	wait = true
+	wait {
+		create = true
+		update = true
+		delete = true
+	}
 }
 				`,
 				Check: resource.ComposeTestCheckFunc(
@@ -213,7 +217,7 @@ func TestAccArgoCDApplicationDataSource_Directory(t *testing.T) {
 			{
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
-						VersionConstraint: "~> 5.0",
+						VersionConstraint: "~> 1.0",
 						Source:            "0011blindmice/argocd",
 					},
 				},
@@ -321,7 +325,7 @@ ingress:
 			{
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
-						VersionConstraint: "~> 5.0",
+						VersionConstraint: "~> 1.0",
 						Source:            "0011blindmice/argocd",
 					},
 				},
@@ -431,7 +435,7 @@ func TestAccArgoCDApplicationDataSource_Kustomize(t *testing.T) {
 			{
 				ExternalProviders: map[string]resource.ExternalProvider{
 					"argocd": {
-						VersionConstraint: "~> 5.0",
+						VersionConstraint: "~> 1.0",
 						Source:            "0011blindmice/argocd",
 					},
 				},
