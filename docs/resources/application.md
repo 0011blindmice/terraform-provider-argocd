@@ -24,7 +24,8 @@ resource "argocd_application" "kustomize" {
   }
 
   cascade = false # disable cascading deletion
-  wait {
+
+  wait_by {
     create = true
     update = true
     delete = true
@@ -181,7 +182,8 @@ resource "argocd_application" "multiple_sources" {
 
 - `cascade` (Boolean) Whether to applying cascading deletion when application is removed.
 - `timeouts` (Block, Optional) (see [below for nested schema](#nestedblock--timeouts))
-- `wait` (Block Set) Configuration for waiting for a resource to reach a desired state based on create, update, or delete. (see [below for nested schema](#nestedblock--wait))
+- `wait` (Boolean) Deprecated in favor of wait_by. Upon application creation or update, wait for application health/sync status to be healthy/Synced, upon application deletion, wait for application to be removed, when set to true. Wait timeouts are controlled by Terraform Create, Update and Delete resource timeouts (all default to 5 minutes). **Note**: if ArgoCD decides not to sync an application (e.g. because the project to which the application belongs has a `sync_window` applied) then you will experience an expected timeout event if `wait = true`.
+- `wait_by` (Block Set) Configuration for waiting for a resource to reach a desired state based on create, update, or delete.  This takes priority over the wait attribute. (see [below for nested schema](#nestedblock--wait_by))
 
 ### Read-Only
 
@@ -438,8 +440,8 @@ Optional:
 - `update` (String)
 
 
-<a id="nestedblock--wait"></a>
-### Nested Schema for `wait`
+<a id="nestedblock--wait_by"></a>
+### Nested Schema for `wait_by`
 
 Optional:
 

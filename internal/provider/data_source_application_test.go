@@ -118,7 +118,7 @@ resource "argocd_application" "foo" {
 		}
 	}
 
-	wait {
+	wait_by {
 		create = true
 		update = true
 		delete = true
